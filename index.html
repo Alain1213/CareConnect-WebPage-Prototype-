@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareConnect - Healthcare Support</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Tailwind CDN for structural styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased">
+    <!-- Navbar -->
+    <nav class="border-b bg-white/80 backdrop-blur-md sticky top-0 z-50 h-16 flex items-center">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-teal-500/10 p-2 rounded-lg">
+                    <svg class="h-6 w-6 text-teal-600 fill-teal-600/20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </div>
+                <span class="font-heading font-bold text-xl">CareConnect</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#" class="hover:text-teal-600">Home</a>
+                <a href="#services" class="hover:text-teal-600">Services</a>
+                <a href="#contact" class="hover:text-teal-600">Contact</a>
+                <button class="bg-teal-600 text-white px-5 py-2 rounded-lg shadow-lg shadow-teal-600/20">Get Support</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative pt-20 pb-32 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                <div class="flex-1 space-y-8">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 text-teal-600 text-sm font-medium">
+                        <span class="flex h-2 w-2 rounded-full bg-teal-500"></span>
+                        Accepting New Patients
+                    </div>
+                    <h1 class="text-5xl lg:text-6xl font-heading font-bold tracking-tight leading-[1.1]">
+                        Compassionate Care, <br>
+                        <span class="text-teal-600">Connected Community.</span>
+                    </h1>
+                    <p class="text-lg text-slate-600 max-w-xl leading-relaxed">
+                        We bridge the gap between healthcare providers and the community. 
+                        Whether you need support or want to lend a helping hand, 
+                        CareConnect is here for you.
+                    </p>
+                    <div class="flex gap-4">
+                        <button class="bg-teal-600 text-white px-8 py-3 rounded-xl shadow-lg shadow-teal-600/25 font-medium">Get Support</button>
+                        <button class="border border-slate-200 bg-white px-8 py-3 rounded-xl font-medium">Volunteer</button>
+                    </div>
+                </div>
+                <div class="flex-1 relative">
+                    <div class="absolute -inset-4 bg-teal-500/20 rounded-[2rem] blur-3xl opacity-30 transform -rotate-6"></div>
+                    <img src="hero-bg.png" alt="Healthcare" class="relative rounded-[2rem] shadow-2xl border-4 border-white aspect-[4/3] object-cover w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Form -->
+    <section id="contact" class="py-24 bg-slate-50">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <div>
+                    <h2 class="text-3xl font-heading font-bold mb-6">We're Here to Help</h2>
+                    <p class="text-slate-600 mb-8 text-lg">Submit your request and our medical team will reach out within 24 hours.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center text-teal-600 font-bold">@</div>
+                            <span class="text-slate-700">support@careconnect.com</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
+                    <form id="supportForm" class="space-y-6">
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium">Full Name</label>
+                            <input type="text" required placeholder="Jane Doe" class="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-teal-500/20 outline-none">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium">Email Address</label>
+                            <input type="email" required placeholder="jane@example.com" class="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-teal-500/20 outline-none">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium">Inquiry Type</label>
+                            <select class="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-teal-500/20 outline-none">
+                                <option value="patient">Patient Support</option>
+                                <option value="volunteer">Volunteering</option>
+                                <option value="general">General Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium">Message</label>
+                            <textarea required placeholder="How can we help?" class="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-teal-500/20 outline-none min-h-[120px]"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-teal-600 text-white py-3 rounded-lg font-bold shadow-lg shadow-teal-600/20">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot Button -->
+    <button id="chatbotToggle" class="fixed bottom-6 right-6 w-14 h-14 bg-teal-600 text-white rounded-full shadow-2xl flex items-center justify-center z-50 hover:scale-105 transition-transform">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
+    </button>
+
+    <!-- Chatbot Window -->
+    <div id="chatbotWindow" class="fixed bottom-24 right-6 w-[350px] h-[500px] bg-white rounded-2xl shadow-2xl z-50 hidden flex-col border border-slate-100 overflow-hidden">
+        <div class="bg-teal-600 p-4 text-white flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span class="font-bold">Care Assistant</span>
+            </div>
+            <button id="closeChat" class="text-white/80 hover:text-white">✕</button>
+        </div>
+        <div id="chatMessages" class="flex-1 p-4 overflow-y-auto space-y-4 bg-slate-50">
+            <div class="flex justify-start">
+                <div class="bg-white px-4 py-2 rounded-2xl rounded-tl-none shadow-sm text-sm border max-w-[80%]">
+                    Hello! I'm your virtual health assistant. How can I help you today?
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t bg-white">
+            <form id="chatForm" class="flex gap-2">
+                <input id="chatInput" type="text" placeholder="Type a message..." class="flex-1 px-4 py-2 rounded-full border border-slate-200 outline-none text-sm focus:border-teal-500">
+                <button type="submit" class="bg-teal-600 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center">➤</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
