@@ -132,9 +132,9 @@ app.delete('/api/support/:id', async (req, res) => {
 });
 
 // COPILOT TASK IMPLEMENTATION:
-// ========================================
+
 // POST /api/appointments - Save appointment data to MongoDB
-// ========================================
+
 app.post('/api/appointments', async (req, res) => {
     try {
         // Validate required fields
@@ -181,9 +181,9 @@ app.post('/api/appointments', async (req, res) => {
     }
 });
 
-// ========================================
+
 // GET /api/appointments - Fetch all appointments from MongoDB
-// ========================================
+
 app.get('/api/appointments', async (req, res) => {
     try {
         // Find all appointments, sort by date (most recent first)
@@ -233,9 +233,9 @@ app.get('/api/appointments/:id', async (req, res) => {
     }
 });
 
-// ========================================
+
 // PUT /api/appointments/:id - Update appointment status
-// ========================================
+
 app.put('/api/appointments/:id', async (req, res) => {
     try {
         const updated = await Appointment.findByIdAndUpdate(
@@ -274,9 +274,8 @@ app.put('/api/appointments/:id', async (req, res) => {
     }
 });
 
-// ========================================
 // DELETE /api/appointments/:id - Delete an appointment
-// ========================================
+
 app.delete('/api/appointments/:id', async (req, res) => {
     try {
         const deleted = await Appointment.findByIdAndDelete(req.params.id);
@@ -305,7 +304,3 @@ app.delete('/api/appointments/:id', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`🚀 Server is running on http://localhost:${PORT}`);
 });
-
-
-
-

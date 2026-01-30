@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-// COPILOT TASK IMPLEMENTATION:
-// Simple appointment booking schema with required fields and timestamps
 const appointmentSchema = new mongoose.Schema({
     // Required: Patient name
     patientName: { 
