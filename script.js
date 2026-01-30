@@ -15,6 +15,7 @@ const chatForm = document.getElementById('chatForm');
 const chatInput = document.getElementById('chatInput');
 const chatMessages = document.getElementById('chatMessages');
 const supportForm = document.getElementById('supportForm');
+const requestList = document.getElementById('requestList');
 
 // --- AI Chatbot Knowledge Base ---
 const botKnowledge = {
@@ -94,17 +95,84 @@ chatForm.addEventListener('submit', (e) => {
 });
 
 // --- Support Form Functionality ---
-if (supportForm) {
-    supportForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // In a real app, you would send this data to a server
-        const formData = new FormData(supportForm);
-        console.log('Form Submitted:', Object.fromEntries(formData));
+// Real Backend API endpoint (MongoDB)
+const API_URL = 'http://localhost:3000/api/support';
 
-        // Show success state
-        alert('Thank you for your request! A CareConnect representative will contact you within 24 hours.');
-        supportForm.reset();
+async function fetchRequests() {
+    try {
+        const response = await fetch(API_URL);
+        // If the server isn't running, this might fail
+        if (!response.ok) return []; 
+        return await response.json();
+    } catch (error) {
+        console.warn('Could not connect to backend. Is the server running?');
+        return [];
+    }
+}
+
+function createRequestItem(request) {
+    const item = document.createElement('li');
+    // MongoDB stores date in 'createdAt'
+    const date = new Date(request.createdAt).toLocaleString();
+    item.className = 'bg-white border border-slate-100 rounded-lg px-3 py-2 shadow-sm';
+    item.textContent = `${request.fullName} • ${request.inquiryType} • ${date}`;
+    return item;
+}
+
+async function renderRequests() {
+    if (!requestList) return;
+    
+    // Show loading state briefly or just fetch
+    const requests = await fetchRequests();
+    
+    requestList.innerHTML = '';
+
+    if (requests.length === 0) {
+        const empty = document.createElement('li');
+        empty.className = 'text-slate-400';
+        empty.textContent = 'No requests yet. (Ensure server is running)';
+        requestList.appendChild(empty);
+        return;
+    }
+
+    requests.forEach((request) => {
+        requestList.appendChild(createRequestItem(request));
+    });
+}
+
+if (supportForm) {
+    // Initial load
+    renderRequests();
+
+    supportForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(supportForm);
+        const payload = Object.fromEntries(formData);
+        // Note: keeping createdAt on client is okay, 
+        // but usually the server sets it. 
+        // Our Mongoose model sets default: Date.now, so we can omit it here.
+
+        try {
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                // Refresh list from server to show the new item
+                await renderRequests();
+
+                alert('Thank you for your request! Saved to database.');
+                supportForm.reset();
+            } else {
+                throw new Error('Server returned an error');
+            }
+        } catch (error) {
+            console.error('Request failed:', error);
+            alert('Sorry, make sure the Node.js server is running (npm start).');
+        }
     });
 }
 
