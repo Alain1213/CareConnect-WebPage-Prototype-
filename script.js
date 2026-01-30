@@ -261,9 +261,8 @@ if (supportForm) {
 }
 
 // COPILOT TASK IMPLEMENTATION:
-// ========================================
 // Connect Appointment Form to Backend API
-// ========================================
+
 const APPOINTMENT_API_URL = 'http://localhost:3000/api/appointments';
 
 // Fetch appointments from backend
